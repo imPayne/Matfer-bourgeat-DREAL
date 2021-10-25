@@ -1,0 +1,46 @@
+#canvas1 {
+    position: absolute;
+    background: url('./warehouse_plan.jpg');
+    transform: rotate(45);
+    text-align: center;
+    padding: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 7px solid black;
+    background-size: 100% 100%;
+}
+
+h1 {
+    padding: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.button_zone {
+    display: block;
+    width: 780px;
+    height: 465px;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    transition: .2s;
+    background-color: red;
+}

@@ -123,14 +123,16 @@ draw();
 
 
 function draw() {
+    let sumMass;
+    ctx.font = "25px Georgia";
     console.log(buildings);
     buildings.forEach(function(building) {
         drawStock(building.posX, building.posY, building.width, building.height, building.color, "4");
         building.zones.forEach(function(zone) {
             drawStock(zone.posX, zone.posY, zone.width, zone.height, zone.color, "4");
             zone.storages.forEach(function(storage) {
-                let sumMass = storage.masseBois + storage.massePlastique + storage.massePD;
-                ctx.fillText(sumMass.toString(), zone.posX, zone.posY, 1080);
+                sumMass = storage.masseBois + storage.massePlastique + storage.massePD;
+                ctx.fillText(sumMass.toString(), zone.posX, zone.posY, 500);
             })
         })
     });

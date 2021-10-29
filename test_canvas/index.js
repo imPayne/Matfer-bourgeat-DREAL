@@ -119,12 +119,22 @@ var buildings = [
     new Building(305, 620, 275, 320, zones3),
     new Building(640, 620, 200, 235, zones4),
 ];
-draw();
 
+loadImage();
+
+function loadImage() {
+    image = new Image();
+    image.src = './warehouse_plan.jpg';
+    image.onload = function() {
+        ctx.drawImage(image, 0, 0, image.width, image.height,
+            0, 0, canvas.width, canvas.height);
+        draw();
+    }
+}
 
 function draw() {
     let sumMass;
-    ctx.font = "25px Georgia";
+    ctx.font = "25px monospace";
     console.log(buildings);
     buildings.forEach(function(building) {
         drawStock(building.posX, building.posY, building.width, building.height, building.color, "4");
@@ -132,7 +142,7 @@ function draw() {
             drawStock(zone.posX, zone.posY, zone.width, zone.height, zone.color, "4");
             zone.storages.forEach(function(storage) {
                 sumMass = storage.masseBois + storage.massePlastique + storage.massePD;
-                ctx.fillText(sumMass.toString(), zone.posX, zone.posY, 500);
+                ctx.fillText(sumMass.toString() + "kg", zone.posX, zone.posY, 500);
             })
         })
     });

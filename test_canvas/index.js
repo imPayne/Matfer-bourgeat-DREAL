@@ -1,7 +1,7 @@
 var canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
-var mainBatX = 43;
-var mainBatY = 25;
+var mainBatX = 90;
+var mainBatY = 50;
 
 
 class Area{
@@ -47,6 +47,9 @@ class Zone extends Area {
     get color() {
         return this._color;
     }
+    addStorage(storage) {
+        this._storages.push(storage);
+    }
 }
 
 class Storage {
@@ -76,7 +79,6 @@ class Storage {
 
 var storages1 = [
     new Storage(40, 49 * 2, 300, 23, 32),
-    new Storage(85, 70 + (60 * 5), 100, 20, 39),
 ]
 
 var storages2 = [
@@ -84,40 +86,64 @@ var storages2 = [
 ]
 
 var storages3 = [
-    new Storage(299, 299, 299, 100, 100, "orange"),
+    new Storage(500, 200, 299, 100, 100),
 ]
 
 var storages4 = [
-    new Storage(499, 299, 299, 100, 100, "yellow"),
+    new Storage(499, 299, 299, 100, 100),
 ]
 
 
 var storages5 = [
-    new Storage(299, 599, 299, 100, 100, "pink"),
+    new Storage(299, 599, 299, 100, 100),
+]
+
+var storages6 = [
+    new Storage(40, 40, 234, 234, 123),
+]
+
+
+var storages7 = [
+    new Storage(40, 40, 2434, 12234, 123),
+]
+
+
+var storages8 = [
+    new Storage(40, 40, 2324, 234, 18623),
+]
+
+
+var storages9 = [
+    new Storage(40, 40, 24, 24, 23),
 ]
 
 var zones1 = [
-    new Zone(85, 72 + (60 * 0), 20, 20, storages1,"blue"),
-    new Zone(85, 70 + (60 * 1), 20, 20, storages2,"blue"),
+    new Zone(220, 130 + (70 * 0), 220, 20, storages1,"blue"),
+    new Zone(220, 90 + (70 * 1), 220, 20, storages2,"blue"),
+    new Zone(450, 60 + (70 * 1), 220, 20, storages6,"blue"),
+    new Zone(450, 90 + (70 * 1), 220, 20, storages7,"blue"),
+    new Zone(680, 90 + (70 * 1), 220, 20, storages8,"blue"),
+    new Zone(680, 60 + (70 * 1), 220, 20, storages9,"blue"),
+
 ]
 
 var zones2 = [
-    new Zone(320, 700, 80, 20, storages3,"green"),
+    new Zone(320, 1200, 80, 20, storages3,"green"),
 ]
 
 var zones3 = [
-    new Zone(40, 150, 20, 20, storages4, "green"),
+    new Zone(40, 1350, 20, 20, storages4, "green"),
 ]
 
 var zones4 = [
-    new Zone(500, 150, 20, 20, storages5, "blue"),
+    new Zone(700, 1450, 20, 20, storages5, "pink"),
 ]
 
 var buildings = [
-    new Building(mainBatX, mainBatY, 1110, 563, zones1),
-    new Building(30, 620, 220, 290, zones2),
-    new Building(305, 620, 275, 320, zones3),
-    new Building(640, 620, 200, 235, zones4),
+    new Building(mainBatX, mainBatY, 2315, 1040, zones1),
+    new Building(60, 1150, 460, 530, zones2),
+    new Building(640, 1150, 570, 590, zones3),
+    new Building(1335, 1150, 405, 430, zones4),
 ];
 
 loadImage();
@@ -142,7 +168,7 @@ function draw() {
             drawStock(zone.posX, zone.posY, zone.width, zone.height, zone.color, "4");
             zone.storages.forEach(function(storage) {
                 sumMass = storage.masseBois + storage.massePlastique + storage.massePD;
-                ctx.fillText(sumMass.toString() + "kg", zone.posX, zone.posY, 500);
+                ctx.fillText(sumMass.toString() + "kg", zone.posX + 20, zone.posY + 20, 500);
             })
         })
     });

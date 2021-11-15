@@ -1,0 +1,92 @@
+[
+  {
+    'Numéro': '11819',
+    'Allée': 'QUAI',
+    Colonne: 'JOE',
+    Niveau: '',
+    Emplacement: '',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  },
+  {
+    'Numéro': '11820',
+    'Allée': 'QUAI',
+    Colonne: 'FRE',
+    Niveau: '',
+    Emplacement: '',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  },
+  {
+    'Numéro': '11821',
+    'Allée': 'QUAI',
+    Colonne: 'EUR',
+    Niveau: '',
+    Emplacement: '',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  },
+  {
+    'Numéro': '11822',
+    'Allée': 'QUAI',
+    Colonne: 'ASI',
+    Niveau: '',
+    Emplacement: '',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  },
+  {
+    'Numéro': '11823',
+    'Allée': 'QUAI',
+    Colonne: 'AME',
+    Niveau: '',
+    Emplacement: '',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  },
+  {
+    'Numéro': '11824',
+    'Allée': 'QUAI',
+    Colonne: 'AFR',
+    Niveau: '',
+    Emplacement: '',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  },
+  {
+    'Numéro': '11825',
+    'Allée': 'QUAI',
+    Colonne: 'OCA',
+    Niveau: '',
+    Emplacement: '',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  },
+  {
+    'Numéro': '26959',
+    'Allée': 'FB5',
+    Colonne: '012',
+    Niveau: '10',
+    Emplacement: '01',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  },
+  {
+    'Numéro': '26960',
+    'Allée': 'FB5',
+    Colonne: '012',
+    Niveau: '10',
+    Emplacement: '02',
+    Magasin: 'FLO',
+    'Coordonnée X': '0',
+    'Coordonnée Y': '0'
+  }
+]

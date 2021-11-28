@@ -11,7 +11,11 @@ class Zone extends Model
 
     protected $fillable = ['posX', 'posY', 'width', 'height', 'alley', 'column'];
 
-    public function storage() {
+    public function storages() {
         return $this->hasMany(Storage::class);
+    }
+
+    public function building() {
+        return $this->belongsTo(Building::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBuildingsTable extends Migration
+class CreateZonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateBuildingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('buildings', function (Blueprint $table) {
+        Schema::create('zones', function (Blueprint $table) {
             $table->id();
             $table->integer('posX');
             $table->integer('posY');
             $table->integer('width');
             $table->integer('height');
+            $table->string('alley');
+            $table->string('column');
+            $table->foreignId('building_id')->references('id')->on('buildings');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateBuildingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buildings');
+        Schema::dropIfExists('zones');
     }
 }

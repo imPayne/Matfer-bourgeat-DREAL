@@ -10,4 +10,8 @@ class Building extends Model
     use HasFactory;
 
     protected $fillable = ['posX', 'posY', 'width', 'height'];
+
+    public function zones() {
+        return $this->hasMany(Zone::class);
+    }
 }

@@ -77,68 +77,6 @@ class Storage {
     }
 }
 
-var storages1 = [
-    new Storage(40, 49 * 2, 300, 23, 32),
-]
-
-var storages2 = [
-    new Storage(85, 70 + (60 * 2), 100, 20, 39),
-]
-
-var storages3 = [
-    new Storage(500, 200, 299, 100, 100),
-]
-
-var storages4 = [
-    new Storage(499, 299, 299, 100, 100),
-]
-
-
-var storages5 = [
-    new Storage(299, 599, 299, 100, 100),
-]
-
-var storages6 = [
-    new Storage(40, 40, 234, 234, 123),
-]
-
-
-var storages7 = [
-    new Storage(40, 40, 2434, 12234, 123),
-]
-
-
-var storages8 = [
-    new Storage(40, 40, 2324, 234, 18623),
-]
-
-
-var storages9 = [
-    new Storage(40, 40, 24, 24, 23),
-]
-
-var zones1 = [
-    new Zone(220, 130 + (70 * 0), 220, 20, storages1,"blue"),
-    new Zone(220, 90 + (70 * 1), 220, 20, storages2,"blue"),
-    new Zone(450, 60 + (70 * 1), 220, 20, storages6,"blue"),
-    new Zone(450, 90 + (70 * 1), 220, 20, storages7,"blue"),
-    new Zone(680, 90 + (70 * 1), 220, 20, storages8,"blue"),
-    new Zone(680, 60 + (70 * 1), 220, 20, storages9,"blue"),
-
-]
-
-var zones2 = [
-    new Zone(320, 1200, 80, 20, storages3,"green"),
-]
-
-var zones3 = [
-    new Zone(40, 1350, 20, 20, storages4, "green"),
-]
-
-var zones4 = [
-    new Zone(700, 1450, 20, 20, storages5, "pink"),
-]
-
 var buildings = [
     new Building(mainBatX, mainBatY, 2315, 1040, zones1),
     new Building(60, 1150, 460, 530, zones2),
@@ -196,39 +134,3 @@ function drawStock(x, y, width, height, color, lineWidth) {
 {id: 15, x: 320, y: 700, width: 70, height: 20, color: "blue", lineWidth: "4"},
 {id: 16, x: 320, y: 810, width: 110, height: 20, color: "blue", lineWidth: "4"},
 {id: 17, x: 320, y: 860, width: 60, height: 20, color: "blue", lineWidth: "4"},,*/
-
-
-/*class Zone{
-    constructor(posX, posY, width, height, color, lineWidth) {
-        this._color = color;
-        this._lineWidth = lineWidth;
-        this._posX = posX;
-        this._posY = posY;
-        this._width = width;
-        this._height = height;
-        this._sites = sites;
-    }
-    get color() {
-        return this._color;
-    }
-    get lineWidth() {
-        return this._lineWidth;
-    }
-    get posX() {
-        return this._posX;
-    }
-    get posY() {
-        return this._posY;
-    }
-    get width() {
-        return this._width;
-    }
-    get height() {
-        return this._height;
-    }
-
-    draw() {
-        drawStock(posX, posY, width, height, color, lineWidth);
-        return
-    }
-}*/

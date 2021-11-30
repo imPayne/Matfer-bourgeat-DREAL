@@ -1,5 +1,8 @@
 # Build and Release Folders
 bin-debug/
+test_canvas/
+repoMathieu/
+php_dreal/
 bin-release/
 [Oo]bj/
 [Bb]in/

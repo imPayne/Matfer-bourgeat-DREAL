@@ -10,8 +10,8 @@ create table Buildings
 
 create table Zone
 (
-    building_id int null,
-    zone_id     int auto_increment
+    building_id int not null,
+    id     int auto_increment
         primary key,
     zone_posX   int null,
     zone_posY   int null,
@@ -24,11 +24,11 @@ create table Zone
 
 create table Storage
 (
-    zone_id              int null,
-    storage_id           int auto_increment
+    zone_id              int not null,
+    id                   int auto_increment
         primary key,
-    Storage_posX         int null,
-    Storage_posY         int null,
+    level                varchar(100) null,
+    storage              varchar(100) null,
     StorageMassBois      int null,
     StorageMassPlastique int null,
     StorageMassPD        int null,
@@ -36,10 +36,3 @@ create table Storage
         foreign key (zone_id) references Zone (zone_id)
             on update cascade on delete cascade
 );
-
-create index zone_id
-    on Storage (zone_id);
-
-create index building_id
-    on Zone (building_id);
-

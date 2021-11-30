@@ -6,7 +6,8 @@ php_dreal/
 bin-release/
 [Oo]bj/
 [Bb]in/
-
+.env
+.env~
 # Other files and folders
 .settings/
 

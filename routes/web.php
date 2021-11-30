@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Console\Commands\UpdateDatabase;
-use App\Http\Controllers\showController;
+use App\Http\Controllers\ZoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/update', [UpdateDatabase::class, 'handle'])->name('handle');
-
-Route::get('/list', [showController::class, 'show']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+Route::get('/zones', [ZoneController::class, 'index']);

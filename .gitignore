@@ -1,24 +1,15 @@
-# Build and Release Folders
-bin-debug/
-test_canvas/
-repoMathieu/
-php_dreal/
-bin-release/
-[Oo]bj/
-[Bb]in/
-
-# Other files and folders
-.settings/
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
 .env
-.env~
-
-
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode

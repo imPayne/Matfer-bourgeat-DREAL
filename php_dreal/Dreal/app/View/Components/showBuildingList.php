@@ -23,6 +23,6 @@ class showBuildingList extends Component
      */
     public function render()
     {
-        return view('components.show-building-list');
+        return view('components.showBuildingList');
     }
 }

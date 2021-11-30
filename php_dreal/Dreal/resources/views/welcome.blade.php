@@ -27,7 +27,6 @@
                 <label for="parser-csv">Database</label>
                 <button type="submit" >CSV parser</button>
             </form>
-        
         </div>
     </body>
 </html>

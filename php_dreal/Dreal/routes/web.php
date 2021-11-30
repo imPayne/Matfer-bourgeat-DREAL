@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Console\Commands\UpdateDatabase;
+use App\Http\Controllers\showController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/update', [UpdateDatabase::class, 'handle'])->name('handle');
+
+Route::get('/list', [showController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

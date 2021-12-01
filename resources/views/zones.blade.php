@@ -3,11 +3,12 @@
 @section('content')
 
 <h1>Liste des zones</h1>
+<h2 class="text-center">Liste des zones</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($zones as $zone)
             <div class="col">
                 <div class="card mb-1" style="width: 18rem;">
-                    <div class="card-header" style="background-color: #5bc0de;">
+                    <div class="card-header" style="background-color: #5cb85c;">
                         zone:{{$zone['id']}}
                     </div>
                     @foreach($zone->storages->slice(0,5) as $storage)

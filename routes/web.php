@@ -19,3 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/zones', [ZoneController::class, 'index']);
+
+Route::get('/search', function () {
+    return view('search');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});

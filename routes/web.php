@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ZoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +16,3 @@ use App\Http\Controllers\ZoneController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/zones', [ZoneController::class, 'index']);

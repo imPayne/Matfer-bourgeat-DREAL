@@ -7,18 +7,20 @@
         @foreach($zones as $zone)
             <div class="col">
                 <div class="card mb-1" style="width: 18rem;">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: #5bc0de;">
                         zone:{{$zone['id']}}
                     </div>
+                    @foreach($zone->storages->slice(0,5) as $storage)
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">storage id: {{$zone['id']}}</li>
-                            <li class="list-group-item">number: {{$zone['number']}}</li>
-                            <li class="list-group-item">level: {{$zone['level']}}</li>
-                            <li class="list-group-item">storage: {{$zone['storage']}}</li>
-                            <li class="list-group-item">zone_id: {{$zone['zone_id']}}</li></li>
+                            <li class="list-group-item">storage id: {{$storage['id']}}</li>
+                            <li class="list-group-item">number: {{$storage['number']}}</li>
+                            <li class="list-group-item">level: {{$storage['level']}}</li>
+                            <li class="list-group-item">storage: {{$storage['storage']}}</li>
+                            <li class="list-group-item">zone_id: {{$storage['zone_id']}}</li></li>
                         </ul>
                     </div>
+                    @endforeach
                 </div>
             </div>
         @endforeach

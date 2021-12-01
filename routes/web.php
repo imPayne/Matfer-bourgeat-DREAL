@@ -15,7 +15,7 @@ use App\Http\Controllers\ZoneController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
 });
 
 Route::get('/zones', [ZoneController::class, 'index']);

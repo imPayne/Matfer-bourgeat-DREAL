@@ -15,15 +15,17 @@ use App\Http\Controllers\ZoneController;
 */
 
 Route::get('/', function () {
-    return view('layout');
+    return view('home');
 });
 
 Route::get('/zones', [ZoneController::class, 'index']);
 
+//route for search bar 
 Route::get('/search', function () {
     return view('search');
 });
 
+//display the home page when we click on home in the navbar
 Route::get('/home', function () {
     return view('home');
 });

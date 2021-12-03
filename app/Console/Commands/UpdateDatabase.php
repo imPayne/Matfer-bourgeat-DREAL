@@ -47,10 +47,10 @@ class UpdateDatabase extends Command
         }
         $value = intval($matches[0]);
         if ($value % 2 == 0) {
-            $preciseY = (int)$posY + 20;
+            $preciseY = (int)$posY + 100;
         }
         else {
-            $preciseY = (int)$posY - 20;
+            $preciseY = (int)$posY - 100;
         }
         return($preciseY);
     }

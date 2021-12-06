@@ -21,6 +21,9 @@ class CreateZonesTable extends Migration
             $table->integer('height');
             $table->string('alley');
             $table->string('column');
+            $table->integer('massWood');
+            $table->integer('massPlastic');
+            $table->integer('massDangerousProducts');
             $table->foreignId('building_id')->references('id')->on('buildings');
             $table->timestamps();
         });

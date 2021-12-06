@@ -41,28 +41,40 @@ class UpdateDatabase extends Command
 
     public function getPreciseY($alley, $posY) {
         $alleyNumber = preg_match('/\d+/', $alley, $matches);
+        $takeCharOfAlley = substr($alley, 0, 2); // permet de récupérer seulement les 2 premiers caractères
+
         if (!$matches) {
             $defaultY = intval($posY);
             return($defaultY);
         }
         $value = intval($matches[0]);
+        if ($alley == "FC1") { // quand on passe de l'alley FB9 qui est impair la colonne en face est aussi impair (FC1)=> cas special
+            $preciseY = (int)$posY + 1.6;
+            return ($preciseY);
+        }
+        if ($value > 1 && $takeCharOfAlley != "FB" && $takeCharOfAlley != "FC") {
+            $defaultY = intval($posY);
+            dump($value, " > 1", $takeCharOfAlley, "!= FB || FC");
+            return($defaultY);
+        }
         if ($value % 2 == 0) {
-            $preciseY = (int)$posY + 100;
+            $preciseY = (int)$posY + 1.6;
         }
         else {
-            $preciseY = (int)$posY - 100;
+            $preciseY = (int)$posY - 1.6;
         }
         return($preciseY);
     }
 
     public function handle()
     {
+        dump("database is updating please wait...");
         //posX,posY,width,height
         // insert buildings data in database by parsing a csv file
         $building = Building::findOrNew(1);
         if (!$building->id) {
-            $building->posX = 90;
-            $building->posY = 50;
+            $building->posX = 50;
+            $building->posY = 90;
             $building->width = 2315;
             $building->height = 1040;
             $building->save();
@@ -87,6 +99,9 @@ class UpdateDatabase extends Command
                     $zone->posY = $this->getPreciseY($data[1], $data[7]);
                     $zone->width = 20;
                     $zone->height = 20;
+                    $zone->massWood = 0;
+                    $zone->massPlastic = 0;
+                    $zone->massDangerousProducts = 0;
                     $zone->building()->associate($building->id);
                     $zone->save();
                     #setting zone to storage

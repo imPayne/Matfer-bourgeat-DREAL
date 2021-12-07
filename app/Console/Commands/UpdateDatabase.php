@@ -47,16 +47,30 @@ class UpdateDatabase extends Command
             $defaultY = intval($posY);
             return($defaultY);
         }
+        
         $value = intval($matches[0]);
-        if ($alley == "FC1") { // quand on passe de l'alley FB9 qui est impair la colonne en face est aussi impair (FC1)=> cas special
-            $preciseY = (int)$posY + 1.6;
-            return ($preciseY);
+        if ($takeCharOfAlley == "FD" && $value == 1) {
+            $preciseY = (int)$posY - 1.6; // cas pour FD1 car pour FC9 et FD1 les deux sont impaires
+            return($preciseY);
         }
-        if ($value > 1 && $takeCharOfAlley != "FB" && $takeCharOfAlley != "FC") {
+
+        if ($takeCharOfAlley != "FB" && $takeCharOfAlley != "FC" && $alley != "FD1") {
             $defaultY = intval($posY);
-            dump($value, " > 1", $takeCharOfAlley, "!= FB || FC");
             return($defaultY);
         }
+
+        // a partir de FB9 les racks (impaire, paire) sont changé =>(paire, impaire) donc plus le même algo
+        if ($takeCharOfAlley == "FC" || $takeCharOfAlley == "FD") { // quand on passe de l'alley FB9 qui est impair la colonne en face est aussi impair (FC1)=> cas special
+            if ($value % 2 == 0) {
+                $preciseY = (int)$posY - 1.6;
+            }
+            if ($value % 2 != 0) {
+                $preciseY = (int)$posY + 1.6;
+            }
+            return ($preciseY);
+        }
+
+        //algo pour FB1 a FB9 (impaire/paire)
         if ($value % 2 == 0) {
             $preciseY = (int)$posY + 1.6;
         }

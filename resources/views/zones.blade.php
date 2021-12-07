@@ -83,8 +83,9 @@
                 //console.log("id", zones[i].id, "posX:", zones[i].posX, "posY:",zones[i].posY, "width:", zones[i].width,"height:", zones[i].height, "alley", zones[i].alley, "column", zones[i].column);
             }
             else {
-                console.log("🆕id", zones[i].id, "posX:", zones[i].posX, "posY:",zones[i].posY, "width:", zones[i].width,"height:", zones[i].height, "alley", zones[i].alley, "column", zones[i].column);
-                drawStock(canvasPosX, canvasPosY, canvasWidth, canvasHeight, "red", "2");
+                //console.log("🆕id", zones[i].id, "posX:", zones[i].posX, "posY:",zones[i].posY, "width:", zones[i].width,"height:", zones[i].height, "alley", zones[i].alley, "column", zones[i].column);
+                drawStock(canvasPosX, canvasPosY, canvasWidth * 2, canvasHeight, "red", "2");
+                console.log(zones[i]);
                 ctx.fillText(zones[i].id, canvasPosX, canvasPosY);
 
             }

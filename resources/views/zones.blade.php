@@ -40,9 +40,14 @@
         var x = 30;
         var y = 300;
 
+        //display main buildings
         drawStock(x, y, width * 28, 29 * height, "red", "3");
         ctx.font = "50px Courier New";
         ctx.fillText("Building FLO",x - 10, y - 20);
+
+        //display batiment stockage carton massePlastique
+        drawStock(2000, 4100, width * 10, height * 14, "green", "5");
+        ctx.fillText("Building plastic cardboard", 2000 - 10, 4100 - 20);
     }
 
     function displayDataMass(zones, i ,posX, posY, width, height) {
@@ -69,11 +74,12 @@
             var canvasHeight = 6 * zones[i].height;
             var checkFirstChar = zones[i].alley.charAt(0);
             var checkSecondChar = zones[i].alley.charAt(1);
+            var alleyChar = checkFirstChar + checkSecondChar;
 
             if ((checkFirstChar == 'F' && checkSecondChar == 'B') || (checkFirstChar == 'F' && checkSecondChar == 'C')
             || zones[i].alley == "FD1") {
 
-                drawStock(canvasPosX, canvasPosY, canvasWidth, canvasHeight, "black", "2");
+                drawStock(canvasPosX, canvasPosY, canvasWidth, canvasHeight, "black", "3");
                 if (zones[i].alley == "FB1")
                     ctx.fillText(zones[i].column, canvasPosX + 20, canvasPosY - 20);
                 if (zones[i].column == "001") {
@@ -84,10 +90,120 @@
             }
             else {
                 //console.log("🆕id", zones[i].id, "posX:", zones[i].posX, "posY:",zones[i].posY, "width:", zones[i].width,"height:", zones[i].height, "alley", zones[i].alley, "column", zones[i].column);
-                drawStock(canvasPosX, canvasPosY, canvasWidth * 2, canvasHeight, "red", "2");
-                console.log(zones[i]);
-                ctx.fillText(zones[i].id, canvasPosX, canvasPosY);
 
+                // affichage zones batiment stockage plastique carton
+                if (zones[i].alley == "FF4") {
+
+                    drawStock(canvasPosX + 1000, canvasPosY, canvasWidth, canvasHeight + 200, "purple", "6");
+                    //console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                    ctx.fillText(zones[i].alley, canvasPosX + 1000, canvasPosY - 20);
+                }
+                if (zones[i].alley == "FF5") {
+
+                    drawStock(canvasPosX + 1200, canvasPosY, canvasWidth, canvasHeight + 200, "purple", "6");
+                    //console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                    ctx.fillText(zones[i].alley, canvasPosX + 1200, canvasPosY - 20);
+                }
+                if (zones[i].alley == "FF6") {
+
+                    drawStock(canvasPosX + 1325, canvasPosY, canvasWidth, canvasHeight + 200, "purple", "6");
+                    //console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                    ctx.fillText(zones[i].alley, canvasPosX + 1325, canvasPosY - 20);
+                }
+                if (zones[i].alley == "FF7") {
+
+                    drawStock(canvasPosX + 1550, canvasPosY, canvasWidth, canvasHeight + 200, "purple", "6");
+                    //console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                    ctx.fillText(zones[i].alley, canvasPosX + 1550, canvasPosY - 20);
+                }
+                if (zones[i].alley == "FF8") {
+
+                    drawStock(canvasPosX + 1675, canvasPosY, canvasWidth, canvasHeight + 200, "purple", "6");
+                    //console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                    ctx.fillText(zones[i].alley, canvasPosX + 1675, canvasPosY - 20);
+                }
+                if (zones[i].alley == "FF9") {
+
+                    drawStock(canvasPosX + 1900, canvasPosY, canvasWidth, canvasHeight + 200, "purple", "6");
+                    //console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                    ctx.fillText(zones[i].alley, canvasPosX + 1900, canvasPosY - 20);
+                }
+
+                
+
+                // affichage zones batiment stock produits dangereux
+                
+                /*if (zones[i].alley == "FD7" || zones[i].alley == "FD8" || zones[i].alley == "FD9" || 
+                zones[i].alley == "FE1" || zones[i].alley == "FD2" || zones[i].alley == "FD3" || 
+                zones[i].alley == "FD4" || zones[i].alley == "FD5" || zones[i].alley == "FD6" || 
+                zones[i].alley == "FE2" || zones[i].alley == "FE3" || zones[i].alley == "FE4" || 
+                zones[i].alley == "FE5" || zones[i].alley == "FE6" || zones[i].alley == "FE7" ||
+                zones[i].alley == "FE8" || zones[i].alley == "FE9" || zones[i].alley == "FF1" || 
+                zones[i].alley == "FF2" || zones[i].alley == "FF3") {*/
+
+                var switchAlley = zones[i].alley;
+                switch (switchAlley) {
+                    case "FE2":
+                        console.log("<-------------------------------------->");
+                        console.log("Old Y: " + zones[i].posY);
+                        zones[i].posY = 70;
+                        console.log("New Y: " + zones[i].posY);
+                        canvasPosY = (zones[i].posY)* 60;
+                        drawStock(canvasPosX - 1000, canvasPosY, canvasWidth * 3, canvasHeight / 2, "red", "4");
+                        console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                        console.log("O");
+                        ctx.fillText(zones[i].alley + " " + zones[i].posY, canvasPosX - 1000, canvasPosY - 20);
+                        break;
+                    case "FE3":
+                        console.log("<-------------------------------------->");
+                        console.log("Old Y: " + zones[i].posY);
+                        zones[i].posY = 72;
+                        console.log("New Y: " + zones[i].posY);
+                        canvasPosY = (zones[i].posY)* 60;
+                        drawStock(canvasPosX - 1000, canvasPosY, canvasWidth * 3, canvasHeight / 2, "red", "4");
+                        console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                        ctx.fillText(zones[i].alley + " " + zones[i].posY, canvasPosX - 1000, canvasPosY - 20);
+                        break;
+                    case "FE4":
+                        console.log("<-------------------------------------->");
+                        console.log("Old Y: " + zones[i].posY);
+                        zones[i].posY = 74;
+                        console.log("New Y: " + zones[i].posY);
+                        canvasPosY = (zones[i].posY)* 60;
+                        drawStock(canvasPosX - 1000, canvasPosY, canvasWidth * 3, canvasHeight / 2, "red", "4");
+                        console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                        ctx.fillText(zones[i].alley + " " + zones[i].posY, canvasPosX - 1000, canvasPosY - 20);
+                        break;
+                    case "FE5":
+                        console.log("<-------------------------------------->");
+                        console.log("Old Y: " + zones[i].posY);
+                        zones[i].posY = 76;
+                        console.log("New Y: " + zones[i].posY);
+                        canvasPosY = (zones[i].posY)* 60;
+                        drawStock(canvasPosX - 1000, canvasPosY, canvasWidth * 3, canvasHeight / 2, "red", "4");
+                        console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                        ctx.fillText(zones[i].alley + " " + zones[i].posY, canvasPosX - 1000, canvasPosY - 20);
+                        break;
+                    case "FE6":
+                        console.log("<-------------------------------------->");
+                        console.log("Old Y: " + zones[i].posY);
+                        zones[i].posY = 78;
+                        console.log("New Y: " + zones[i].posY);
+                        canvasPosY = (zones[i].posY)* 60;
+                        drawStock(canvasPosX - 1000, canvasPosY, canvasWidth * 3, canvasHeight / 2, "red", "4");
+                        console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                        ctx.fillText(zones[i].alley + " " + zones[i].posY, canvasPosX - 1000, canvasPosY - 20);
+                        break;
+                    default: 
+                        console.log("Oups");
+                    
+                }
+                /*
+                if (alleyChar == "FE") {
+                    drawStock(canvasPosX - 1500, canvasPosY + 500, canvasWidth / 2, canvasHeight / 2, "blue", "4");
+                    console.log("id =>", zones[i].id, zones[i].alley, zones[i].column, zones[i].posX, zones[i].posY);
+                    ctx.fillText(zones[i].alley + " " + (canvasPosX - 1500) + " " + (canvasPosY + 500), canvasPosX - 1500, canvasPosY + 480);
+                }*/
             }
         }
     }

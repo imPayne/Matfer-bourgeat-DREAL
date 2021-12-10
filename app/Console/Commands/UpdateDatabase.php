@@ -87,10 +87,29 @@ class UpdateDatabase extends Command
         // insert buildings data in database by parsing a csv file
         $building = Building::findOrNew(1);
         if (!$building->id) {
-            $building->posX = 50;
-            $building->posY = 90;
-            $building->width = 2315;
-            $building->height = 1040;
+            $building->name = "FLO";
+            $building->posX = 150;
+            $building->posY = 270;
+            $building->width = 3315;
+            $building->height = 3630;
+            $building->save();
+        }
+        $building = Building::findOrNew(2);
+        if (!$building->id) {
+            $building->name = "Stock Carton";
+            $building->posX = 1950;
+            $building->posY = 4130;
+            $building->width = 1200;
+            $building->height = 1400;
+            $building->save();
+        }
+        $building = Building::findOrNew(3);
+        if (!$building->id) {
+            $building->name = "Produits dangereux";
+            $building->posX = 200;
+            $building->posY = 4130;
+            $building->width = 1300;
+            $building->height = 1300;
             $building->save();
         }
 

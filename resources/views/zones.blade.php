@@ -1,4 +1,4 @@
-@extends('layout')
+<@extends('layout')
 
 @section('content')
 
@@ -11,43 +11,43 @@
         <div class="styleCanvas">
             <canvas id="canvas1" width="12000" height="8000"></canvas>
         </div>
-    </div>
+    </div>  
 
     <script>
 
-    var zones = "{{ $zones }}";
-    zones = JSON.parse(zones.replace(/&quot;/g, '"'));
+    var buildings = "{{ $buildingtest }}";
+    buildings = JSON.parse(buildings.replace(/&quot;/g, '"'));
 
-    //console.log(zones);
+    var zones = "{{ $zonetest }}";
+    zones = JSON.parse(zones.replace(/&quot;/g, '"'));
+    //console.log(buildings.zones[0].posX);
 
     var canvas = document.getElementById("canvas1");
     const ctx = canvas.getContext("2d");
 
-    //loadImage();
-    draw(zones);
+    
+    //loadImage(zones, buildings);
+    draw(buildings, zones);
 
-    function loadImage() {
+    
+    function loadImage(zones,buildings) {
         image = new Image();
         image.src = '../../storage/image/warehouse_plan.jpg';
         image.onload = function() {
-            ctx.drawImage(image, 0, 0, image.width, image.height,
-                0, 0, canvas.width, canvas.height);
-            draw();
+            ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
+            draw(buildings);
         }
     }
 
-    function displayBuilding(width, height) {
-        var x = 30;
-        var y = 300;
+    function displayBuilding(buildings) {
 
         //display main buildings
-        drawStock(x, y, width * 28, 29 * height, "red", "3");
-        ctx.font = "50px Courier New";
-        ctx.fillText("Building FLO",x - 10, y - 20);
-
-        //display batiment stockage carton massePlastique
-        drawStock(2000, 4100, width * 10, height * 14, "green", "5");
-        ctx.fillText("Building plastic cardboard", 2000 - 10, 4100 - 20);
+        for (var i = 0; buildings[i]; i++) {
+            drawStock(buildings[i].posX, buildings[i].posY, buildings[i].width, buildings[i].height, "orange", "5");
+            ctx.font = "60px Courier New";
+            ctx.fillText(buildings[i].name, buildings[i].posX + 30, buildings[i].posY - 30);
+            console.log(buildings[i].name, buildings[i].posX + 30, buildings[i].posY - 30);
+        }
     }
 
     function displayDataMass(zones, i ,posX, posY, width, height) {
@@ -61,7 +61,7 @@
         ctx.fillText("kg", posX + 40, posY + width - 15);
     }
 
-    function displayZone(zones) {
+    function displayZone(zones, buildings) {
 
         let sumMass;
         ctx.font = "20px monospace";
@@ -206,13 +206,10 @@
         }
     }
 
-    function draw(zones) {
-        
-        var width = 6 * zones[0].width;
-        var height = 6 * zones[0].height;
+    function draw(buildings, zones) {
 
-        displayBuilding(width, height);
-        displayZone(zones);
+        displayBuilding(buildings);
+        displayZone(zones, buildings);
     }
 
     function drawStock(x, y, width, height, color, lineWidth) {

@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/zones', [ZoneController::class, 'index']);
 
+Route::get('/test', [ZoneController::class, 'test']);
+
 //route for search bar 
 Route::get('/search', function () {
     return view('search');

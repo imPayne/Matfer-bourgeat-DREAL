@@ -47,7 +47,7 @@ class UpdateDatabase extends Command
             $defaultY = intval($posY);
             return($defaultY);
         }
-        
+
         $value = intval($matches[0]);
         if ($takeCharOfAlley == "FD" && $value == 1) {
             $preciseY = (int)$posY - 1.6; // cas pour FD1 car pour FC9 et FD1 les deux sont impaires
@@ -80,6 +80,21 @@ class UpdateDatabase extends Command
         return($preciseY);
     }
 
+    public function parseProduitsDangereux() {
+        $codeDangerousProducts = array(
+            "UN1170" => "Ethanol",
+            "UN1760" => "Liquide corrosif",
+            "UN1950" => "Aérosol",
+            "UN1993" => "Liquide inflammable",
+            "UN2037" => "Cartouche gaz",
+            "UN2623" => "Allume-feu",
+            "UN3077" => "Substance solide dangereuse pour l'environnement",
+            "UN3175" => "Solide contenant des liquides inflammables",
+            "UN3266" => "Liquide corrosif, basique, inorganique",
+            "UN3295" => "Liquide hydrocarboné (inflammable)"
+        );
+    }
+
     public function handle()
     {
         dump("database is updating please wait...");
@@ -109,14 +124,15 @@ class UpdateDatabase extends Command
             $building->posX = 200;
             $building->posY = 4130;
             $building->width = 1300;
-            $building->height = 1300;
+            $building->height = 1100;
             $building->save();
         }
-
+        $numberStorages = 0;
         //number,alley,column,level,storage,buildings,X,Y
         //parsing CSV file line per line and create new storage and assign data
         if (($handle = fopen(public_path('storages.csv'), "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 10000, ",")) !== FALSE) {
+                $numberStorages++;
                 $storage = new Storage();
                 $storage->number = $data[0];
                 $storage->level = $data[3];
@@ -126,19 +142,18 @@ class UpdateDatabase extends Command
                 ->where('column', '=', $data[2])->first();
                 if (!$zoneExist) {
                     $zone = new Zone();
+                    $zone->numberStorages = $numberStorages;
                     $zone->alley = $data[1];
                     $zone->column = $data[2];
                     $zone->posX = intval($data[6]);
                     $zone->posY = $this->getPreciseY($data[1], $data[7]);
                     $zone->width = 20;
                     $zone->height = 20;
-                    $zone->massWood = 0;
-                    $zone->massPlastic = 0;
-                    $zone->massDangerousProducts = 0;
                     $zone->building()->associate($building->id);
                     $zone->save();
                     #setting zone to storage
                     $storage->zone()->associate($zone->id);
+                    $numberStorages = 0;
                 }else {
                     #setting founded zones
                     $storage->zone()->associate($zoneExist->id);

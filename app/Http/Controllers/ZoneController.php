@@ -9,13 +9,11 @@ use Illuminate\Http\Request;
 class ZoneController extends Controller
 {
     public function index() {
-        
-        //$zones = Zone::all();
-        $building = Building::all();
-        //$zones3 = Storage::all();
-        //return view('zones', ['zones' => $zones]);
-        return view('zones', ['building' => $building]);
-    
+
+        $zones = Zone::all();
+        $buildings = Building::all();
+        $storages = Storage::all();
+        return view('zones', compact('buildings', 'zones', 'storages'));
     }
     public function test() {
         //$buildingtest =  Building::with('zones')->get();
